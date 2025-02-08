@@ -17,6 +17,7 @@ import { Button } from '../ui/Button';
 
 const MobileNav = () => {
     const pathname = usePathname();
+    console.log(pathname); 
 
     return (
         <header className="header">

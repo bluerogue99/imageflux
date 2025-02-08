@@ -7,11 +7,13 @@ interface MongooseConnection {
     promise: Promise<Mongoose> | null;
 }
 
+// Declare a global variable for caching the connection
 declare global {
     var mongoose: MongooseConnection | undefined;
 }
 
-const cached: MongooseConnection = global.mongoose ?? { conn: null, promise: null };
+// Ensure we use globalThis to avoid TypeScript issues
+const cached: MongooseConnection = globalThis.mongoose ?? { conn: null, promise: null };
 
 export const connectToDatabase = async (): Promise<Mongoose> => {
     if (cached.conn) return cached.conn;
@@ -24,7 +26,9 @@ export const connectToDatabase = async (): Promise<Mongoose> => {
     });
 
     cached.conn = await cached.promise;
-    global.mongoose = cached; 
+
+    // Store in global cache
+    globalThis.mongoose = cached;
 
     return cached.conn;
 };
