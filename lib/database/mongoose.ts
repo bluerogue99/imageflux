@@ -9,7 +9,7 @@ interface MongooseConnection {
 
 // Declare a global variable for caching the connection
 declare global {
-    var mongoose: MongooseConnection | undefined;
+    let mongoose: MongooseConnection | undefined;
 }
 
 // Ensure we use globalThis to avoid TypeScript issues
