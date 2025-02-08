@@ -9,8 +9,11 @@ interface MongooseConnection {
 
 // Declare a global variable for caching the connection
 declare global {
-    // Define the type for `mongoose` on the global object
-    var mongoose: MongooseConnection | undefined;
+    namespace NodeJS {
+        interface Global {
+            mongoose?: MongooseConnection;
+        }
+    }
 }
 
 // Use `const` instead of `let` to avoid reassignment
