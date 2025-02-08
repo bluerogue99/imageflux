@@ -4,9 +4,7 @@ import React from 'react';
 import {
     Sheet,
     SheetContent,
-    SheetDescription,
     SheetHeader,
-    SheetTitle,
     SheetTrigger,
   } from "@/components/ui/sheet"
 
@@ -55,25 +53,19 @@ const MobileNav = () => {
                             </SheetHeader>
 
                             <ul className="header-nav_elements mt-4">
-                                {navLinks.map((link) => {
-                                    const isActive = link.route === pathname;
-
-                                    return (
-                                        <li 
-                                            key={link.route} 
-                                        >
-                                            <Link className="sidebar-link cursor-pointer flex items-center gap-2" href={link.route}>
-                                                <Image
-                                                    src={link.icon}
-                                                    alt={link.label}
-                                                    width={24}
-                                                    height={24}
-                                                />
-                                                {link.label}
-                                            </Link>
-                                        </li>
-                                    )
-                                })}
+                            {navLinks.map((link) => (
+                                <li key={link.route}>
+                                    <Link className="sidebar-link cursor-pointer flex items-center gap-2" href={link.route}>
+                                        <Image
+                                            src={link.icon}
+                                            alt={link.label}
+                                            width={24}
+                                            height={24}
+                                        />
+                                        {link.label}
+                                    </Link>
+                                </li>
+                            ))}
                             </ul>
                         </SheetContent>
                     </Sheet>
