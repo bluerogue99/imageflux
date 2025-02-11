@@ -10,5 +10,7 @@ export const config = {
     '/(api|trpc)(.*)',
     // Clerk webhook
     '/api/webhooks/clerk',
+    // Stripe webhook
+    '/api/webhooks/stripe'
   ],
 };
