@@ -1,11 +1,12 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import dotenv from 'dotenv';
+
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
-
-
+dotenv.config();
 // ERROR HANDLER
 export const handleError = (error: unknown) => {
   if (error instanceof Error) {
@@ -22,9 +23,6 @@ export const handleError = (error: unknown) => {
     throw new Error(`Unknown error: ${JSON.stringify(error)}`);
   }
 };
-
-
-
 
 // PLACEHOLDER LOADER
 const shimmer = (w: number, h: number) => `
@@ -49,4 +47,9 @@ const toBase64 = (str: string) =>
 export const dataUrl = `data:image/svg+xml;base64,${toBase64(
   shimmer(1000, 1000)
 )}`;
+
+
+
+
+
 
